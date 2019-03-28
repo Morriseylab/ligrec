@@ -2,9 +2,9 @@ ligrec <- function(scrna,grp.var,org,perc){
   #get grouping variable
   var=as.character(grp.var)
   tt=rownames(GetAssayData(object = scrna, slot = "counts"))
-  
-  #genes=fread("data/ligrecgenes.txt",header = TRUE)       
-  # if(org=="mouse"){data('Mm_PairsLigRec',package="ExpressExtras")}else if(org=="human"){data('Hs_PairsLigRec',package="ExpressExtras")}
+
+  #genes=fread("data/ligrecgenes.txt",header = TRUE)
+  if(org=="mouse"){data('Mm_PairsLigRec',package="ExpressExtras")}else if(org=="human"){data('Hs_PairsLigRec',package="ExpressExtras")}
   genes=unique(c(as.character(rl$ligand),as.character(rl$receptor)))
   genes2=tt[tt %in% genes]
   #For all unique genes in the ligrec list, get their expression value for all cells and the groups the cells belong to
