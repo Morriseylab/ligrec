@@ -4,7 +4,13 @@ ligrec <- function(scrna,grp.var,org,perc){
   tt=rownames(GetAssayData(object = scrna, slot = "counts"))
 
   #genes=fread("data/ligrecgenes.txt",header = TRUE)
-  if(org=="mouse"){data('Mm_PairsLigRec')}else if(org=="human"){data('Hs_PairsLigRec')}
+  if(org=="mouse"){
+    data('Mm_PairsLigRec')
+    rl = mm
+  }else if(org=="human"){
+    data('Hs_PairsLigRec')
+    rl=hs
+    }
   genes=unique(c(as.character(rl$ligand),as.character(rl$receptor)))
   genes2=tt[tt %in% genes]
   #For all unique genes in the ligrec list, get their expression value for all cells and the groups the cells belong to
